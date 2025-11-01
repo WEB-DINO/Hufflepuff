@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyan Setu: Bridge to Knowledge</title>
+    <!-- Chosen Palette: Warm Beige and Indigo -->
+    <!-- Application Structure Plan: A single-page, top-to-bottom scrolling site presenting the 'Gyan Setu' project. Key features from the report are organized into an interactive tabbed section ('How It Works') for user exploration. This structure logically groups the report's content for stakeholders (donors, public) to easily understand the project's components. -->
+    <!-- Visualization & Content Choices: Report Info -> Project Features (Login, AI, Exams). Goal -> Organize & Inform. Viz/Method -> Interactive Tabs (HTML/JS) and Statistic Cards (HTML/Tailwind). Interaction -> User clicks tabs to reveal feature details. Justification -> Tabs condense complex features into a clean, explorable UI, preferable to a long text wall. Stat cards highlight key numbers. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+        
+        :root {
+            --color-bg: #f4f9f4;
+            --color-text: #00555a;
+            --color-primary: #bb9359;
+            --color-primary-light: #fdaa48;
+            --color-secondary: #50c878;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        .tab-button {
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-button.active {
+            border-bottom-color: var(--color-primary);
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .tab-button:hover:not(.active) {
+            background-color: #f1f0ee;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .stat-card {
+            background-color: white;
+            border: 1px solid #e7e5e4;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        
+        .mock-chatbot {
+            border: 1px solid #e0e7ff;
+            background: #fafbff;
+        }
+        
+        .mock-chat-bubble-ai {
+            background: #e0e7ff;
+            color: #3730a3;
+            align-self: flex-start;
+        }
+        
+        .mock-chat-bubble-user {
+            background: #4f46e5;
+            color: white;
+            align-self: flex-end;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="max-w-5xl mx-auto px-4 py-12 md:py-20">
+
+        <!-- Hero Section -->
+        <header class="text-center mb-16 md:mb-24">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-[--color-primary] mb-4">Gyan Setu</h1>
+            <p class="text-2xl md:text-3xl font-bold text-[--color-text] mb-6">Bridge to Knowledge</p>
+            <div class="content-block">
+    <img class="float-left-img" src="https://raw.githubusercontent.com/WEB-DINO/Hufflepuff/refs/heads/main/Screenshot%202025-10-31%20234055.png">
+
+    <p>
+        GYAN SETU "Bridge To Education"
+    </p>
+    
+    <div style="clear: both;"></div> 
+</div>
+            <p class="text-lg md:text-xl text-[--color-secondary] max-w-3xl mx-auto">
+                A transformative, humanitarian project designed to dismantle the educational barriers facing India's most vulnerable—**homeless and uneducated children**.
+            </p>
+        </header>
+
+        <!-- Main Content: How It Works -->
+        <main>
+            <section id="solution" class="mb-16 md:mb-24">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">How It Works</h2>
+                <p class="text-lg text-[--color-secondary] text-center max-w-2xl mx-auto mb-12">
+                    Gyan Setu is a reliable and standardized digital school system. We've designed a complete solution to provide accessible, guided, and validated learning for every child.
+                </p>
+
+                <!-- Interactive Tab Section -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <!-- Tab Buttons -->
+                    <nav class="flex flex-wrap border-b border-gray-200">
+                        <button class="tab-button flex-1 p-4 md:p-6 text-sm md:text-base font-semibold text-[--color-secondary] active" onclick="showTab(event, 'tab-1')">
+                            <span class="text-2xl mr-2 hidden sm:inline">🔑</span> Personalized Access
+                        </button>
+                        <button class="tab-button flex-1 p-4 md:p-6 text-sm md:text-base font-semibold text-[--color-secondary]" onclick="showTab(event, 'tab-2')">
+                            <span class="text-2xl mr-2 hidden sm:inline">🤖</span> Guided Learning
+                        </button>
+                        <button class="tab-button flex-1 p-4 md:p-6 text-sm md:text-base font-semibold text-[--color-secondary]" onclick="showTab(event, 'tab-3')">
+                            <span class="text-2xl mr-2 hidden sm:inline">📈</span> Real Assessment
+                        </button>
+                        <button class="tab-button flex-1 p-4 md:p-6 text-sm md:text-base font-semibold text-[--color-secondary]" onclick="showTab(event, 'tab-4')">
+                            <span class="text-2xl mr-2 hidden sm:inline">🌍</span> Public Deployment
+                        </button>
+                    </nav>
+
+                    <!-- Tab Content Panels -->
+                    <div class="p-6 md:p-10">
+                        <!-- Tab 1: Personalized Access -->
+                        <div id="tab-1" class="tab-content active">
+                            <h3 class="text-2xl font-bold text-[--color-primary] mb-4">Universal Access and Smart Design</h3>
+                            <p class="text-base text-[--color-secondary] mb-6">
+                                The platform’s design is centered on universal accessibility. Every child receives a personalized login key that instantly generates a custom learning path, ensuring their studies are strictly aligned with the official NCERT syllabus for their precise educational stage.
+                            </p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <span class="text-lg font-bold text-[--color-primary] mr-3 mt-1">✔</span>
+                                    <div>
+                                        <h4 class="font-semibold">Text-Only Modules</h4>
+                                        <p class="text-sm text-[--color-secondary]">Guarantees operation even in low-connectivity areas and on limited devices.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-lg font-bold text-[--color-primary] mr-3 mt-1">✔</span>
+                                    <div>
+                                        <h4 class="font-semibold">Multiple Regional Languages</h4>
+                                        <p class="text-sm text-[--color-secondary]">Makes knowledge culturally relevant and cognitively accessible to all users.</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-lg font-bold text-[--color-primary] mr-3 mt-1">✔</span>
+                                    <div>
+                                        <h4 class="font-semibold">NCERT Syllabus Alignment</h4>
+                                        <p class="text-sm text-[--color-secondary]">Provides a standardized, high-quality curriculum for every student.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Tab 2: Guided Learning -->
+                        <div id="tab-2" class="tab-content">
+                            <h3 class="text-2xl font-bold text-[--color-primary] mb-4">Strategic Deployment and Guided Learning</h3>
+                            <p class="text-base text-[--color-secondary] mb-6">
+                                The learning journey is reinforced 24 hours a day by an advanced AI Chatbot. It acts as a patient, guided tutor, fostering true understanding by clarifying concepts and providing hints without ever giving away final answers.
+                            </p>
+                            <div class="mock-chatbot rounded-lg p-4 max-w-md mx-auto">
+                                <div class="flex flex-col space-y-3 h-48">
+                                    <div class="mock-chat-bubble-ai p-3 rounded-lg text-sm w-4/5">
+                                        Hi! I see you're working on fractions. What part is tricky?
+                                    </div>
+                                    <div class="mock-chat-bubble-user p-3 rounded-lg text-sm w-3/5">
+                                        I don't get how to add 1/2 and 1/4.
+                                    </div>
+                                    <div class="mock-chat-bubble-ai p-3 rounded-lg text-sm w-4/5">
+                                        Great question! To add them, they need the same "bottom number" (denominator). Can you think of a number that both 2 and 4 go into?
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab 3: Real Assessment -->
+                        <div id="tab-3" class="tab-content">
+                            <h3 class="text-2xl font-bold text-[--color-primary] mb-4">Assessment and Validation</h3>
+                            <p class="text-base text-[--color-secondary] mb-6">
+                                To cement knowledge and build essential test-taking confidence, the platform features a rigorous assessment structure that mirrors a traditional academic calendar. This validation empowers students and proves the system's effectiveness.
+                            </p>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div class="stat-card">
+                                    <span class="text-4xl font-extrabold text-[--color-primary]">100+</span>
+                                    <p class="font-semibold text-[--color-text] mt-2">Practice Mock Exams</p>
+                                    <p class="text-sm text-[--color-secondary]">For continuous practice.</p>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="text-4xl font-extrabold text-[--color-primary]">2</span>
+                                    <p class="font-semibold text-[--color-text] mt-2">Major School Papers</p>
+                                    <p class="text-sm text-[--color-secondary]">Half-Yearly (Sept) & Annual (April).</p>
+                                </div>
+                                <div class="stat-card">
+                                    <span class="text-4xl font-extrabold text-[--color-primary]">24/7</span>
+                                    <p class="font-semibold text-[--color-text] mt-2">AI Doubt Solving</p>
+                                    <p class="text-sm text-[--color-secondary]">Instant, guided help anytime.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab 4: Public Deployment -->
+                        <div id="tab-4" class="tab-content">
+                            <h3 class="text-2xl font-bold text-[--color-primary] mb-4">Scalable & Strategic Deployment</h3>
+                            <p class="text-base text-[--color-secondary] mb-6">
+                                Gyan Setu is designed for scalable impact. The robust terminals can be deployed strategically in public places, maximizing reach and visibility to children who may not have access to stationary schooling.
+                            </p>
+                            <div class="p-6 bg-[--color-primary-light] rounded-lg">
+                                <p class="font-bold text-[--color-primary]">Our Vision:</p>
+                                <p class="text-base text-indigo-800">
+                                    To transform any public space—a bus stand, a community center, a railway station—into a safe, reliable, and effective learning hub for children in need.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Impact / Goal Section -->
+            <section id="impact" class="text-center bg-white rounded-xl shadow-lg border border-gray-200 p-8 md:p-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Our Ultimate Goal</h2>
+                <p class="text-lg text-[--color-secondary] max-w-2xl mx-auto mb-6">
+                    This comprehensive structure is not just about teaching subjects; it's about restoring dignity and opening clear pathways to opportunity.
+                </p>
+                <p class="text-xl font-bold text-[--color-primary] uppercase tracking-wide">
+                    To be a decisive tool in the national mission to significantly increase the literacy rate.
+                </p>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center mt-16 md:mt-24 pt-8 border-t border-gray-200">
+            <p class="text-sm text-[--color-secondary]">© 2025 Tenkasi's Gyan Setu Project write-up </p>
+        </footer>
+
+    </div>
+
+    <script>
+        function showTab(event, tabId) {
+            // Hide all tab content
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Deactivate all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show the selected tab content
+            document.getElementById(tabId).classList.add('active');
+
+            // Activate the selected tab button
+            event.currentTarget.classList.add('active');
+        }
+
+        // Set the first tab as active by default
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.tab-button').click();
+        });
+    </script>
+
+</body>
+</html>
